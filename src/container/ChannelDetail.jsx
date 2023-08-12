@@ -16,7 +16,6 @@ const ChannelDetail = () => {
     .then((data) => setChannelDetail(data?.items[0]))
 
     fetchFromApi(`search?channelId=${id}&part=snippet&order=date`)
-    .then((data) => setChannelDetail(data?.items[0]))
     .then((data) => setVideos(data?.items))
   }, [id])
   return (
@@ -27,8 +26,15 @@ const ChannelDetail = () => {
             backgroundImage: 'linear-gradient(315deg, #f8ceec 0%, #a88beb 74%)',
             zIndex: 10,
             height: '300px'
-
           }} />
+
+          <ChannelCard channelDetail={channelDetail} marginTop="-110px" />
+        </Box>
+
+        <Box display='flex' p="2">
+          <Box sx={{ mr: {sm: '100px'}}}>
+            <Videos videos={videos} />
+          </Box>
         </Box>
     </Box>
   )
