@@ -9,14 +9,13 @@ const ChannelCard = ({channelDetail, marginTop}) => {
     <Box
         sx={{
             boxShadow: "none",
-            borderRadius: 20,
+            borderRadius: '20px',
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             width: {xs: '350px', md: '320px'},
             height: '326px',
             margin: 'auto',
-            marginTop
         }}
     >
 
