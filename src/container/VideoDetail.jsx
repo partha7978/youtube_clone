@@ -10,19 +10,39 @@ const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
+  const [channelVideoId, setChannelVideoId] = useState('UCwFRGieumnh1MrM5F3D65Tg');
 
   useEffect(() => {
-    fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
+    fetchFromApi(`videos?part=snippet,statistics&id=${id}`)
+    .then((data) =>
       setVideoDetail(data?.items[0])
     );
 
-    fetchFromApi(`search?part=id,snippet&relatedToVideoId=${id}&type=video`)
-      .then((data) => console.log(data, "data"))
+    fetchFromApi(`videos?part=snippet,statistics&id=${id}`)
+    .then((data) =>
+      setChannelVideoId(data?.items[0].snippet.channelId)
+    );
 
-    console.log(videos, "videos")
+    // fetchFromApi(`search?part=id,snippet&relatedToVideoId=${id}&type=video`)
+    //   .then((data) => console.log(data, "data"))
+    // youtube API has recommended videos endpoint issue -- https://github.com/youtube/api-samples/issues/228
+    //so Im showing the channel videos instead
+  
+    console.log(videoDetail, "videoDetail")
   }, [id]);
 
+  useEffect(() => {
+    console.log(channelVideoId ? channelVideoId : 'invalid channel id' , "channelId")
+    fetchFromApi(`search?part=id%2Csnippet&channelId=${channelVideoId}&order=date`).then(
+      (data) => setVideos(data?.items)
+    );
+    console.log(videos, "videosrelated")
+  }, [channelVideoId]);
+
+
+
   if (!videoDetail?.snippet) return "Loading...";
+
   if (!videos) {
     console.log(videos, "videos")
   }
