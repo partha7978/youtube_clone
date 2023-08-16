@@ -8,15 +8,24 @@ import { fetchFromApi } from "../utils/fetchFromApi";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
+  const [videos, setVideos] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setVideoDetail(data?.items[0])
     );
+
+    fetchFromApi(`search?part=id,snippet&relatedToVideoId=${id}&type=video`)
+      .then((data) => console.log(data, "data"))
+
+    console.log(videos, "videos")
   }, [id]);
 
   if (!videoDetail?.snippet) return "Loading...";
+  if (!videos) {
+    console.log(videos, "videos")
+  }
 
   const {
     snippet: { title, channelId, channelTitle },
@@ -66,6 +75,10 @@ const VideoDetail = () => {
           </Box>
         </Box>
       </Stack>
+
+      <Box px={2} py={{ md: 1, xs: 5}} justifyContent='center' alignItems='center'>
+        <Videos videos={videos} />  
+      </Box>
     </Box>
   );
 };
