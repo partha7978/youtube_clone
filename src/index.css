@@ -42,6 +42,8 @@ a {
 .search-bar{
   border:none;
   outline:none;
+  background-color: transparent;
+  color: white;
   width:350px;
 }
 

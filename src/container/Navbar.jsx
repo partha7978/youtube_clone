@@ -2,7 +2,8 @@ import React from "react";
 import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { logo } from "../utils/constants";
-import {SearchBar} from "../components";
+import { SearchBar } from "../components";
+import { Typography } from "@mui/material";
 
 const Navbar = () => (
   <Stack
@@ -16,8 +17,18 @@ const Navbar = () => (
       justifyContent: "space-between",
     }}
   >
-    <Link to="/" style={{ display: "flex", alignItems:'center'}}>
-      <img src={logo} alt="logo" height={45} />
+    <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+      <img src={logo} alt="logo" height={35} />
+      <Typography
+        sx={{ ml: "8px",
+          display: { xs: "none", sm: "block"}
+        }}
+        variant="h5"
+        fontWeight="bold"
+        color="#fff"
+      >
+        YouTube
+      </Typography>
     </Link>
     <SearchBar />
   </Stack>

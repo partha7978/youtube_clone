@@ -10,16 +10,16 @@ const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
-  const [channelVideoId, setChannelVideoId] = useState('UCwFRGieumnh1MrM5F3D65Tg');
+  const [channelVideoId, setChannelVideoId] = useState(
+    "UCwFRGieumnh1MrM5F3D65Tg"
+  );
 
   useEffect(() => {
-    fetchFromApi(`videos?part=snippet,statistics&id=${id}`)
-    .then((data) =>
+    fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setVideoDetail(data?.items[0])
     );
 
-    fetchFromApi(`videos?part=snippet,statistics&id=${id}`)
-    .then((data) =>
+    fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setChannelVideoId(data?.items[0].snippet.channelId)
     );
 
@@ -27,24 +27,25 @@ const VideoDetail = () => {
     //   .then((data) => console.log(data, "data"))
     // youtube API has recommended videos endpoint issue -- https://github.com/youtube/api-samples/issues/228
     //so Im showing the channel videos instead
-  
-    console.log(videoDetail, "videoDetail")
+
+    console.log(videoDetail, "videoDetail");
   }, [id]);
 
   useEffect(() => {
-    console.log(channelVideoId ? channelVideoId : 'invalid channel id' , "channelId")
-    fetchFromApi(`search?part=id%2Csnippet&channelId=${channelVideoId}&order=date`).then(
-      (data) => setVideos(data?.items)
+    console.log(
+      channelVideoId ? channelVideoId : "invalid channel id",
+      "channelId"
     );
-    console.log(videos, "videosrelated")
+    fetchFromApi(
+      `search?part=id%2Csnippet&channelId=${channelVideoId}&order=date`
+    ).then((data) => setVideos(data?.items));
+    console.log(videos, "videosrelated");
   }, [channelVideoId]);
-
-
 
   if (!videoDetail?.snippet) return "Loading...";
 
   if (!videos) {
-    console.log(videos, "videos")
+    console.log(videos, "videos");
   }
 
   const {
@@ -56,13 +57,13 @@ const VideoDetail = () => {
     <Box minHeight="95vh">
       <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
-          <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
+          <Box sx={{ width: "100%", position: "sticky", top: "80px" }}>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               className="react-player"
               controls
             />
-            <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
+            <Typography color="#fff" variant="h5" fontWeight="bold" px={2} py={1}>
               {title}
             </Typography>
             <Stack
@@ -83,22 +84,27 @@ const VideoDetail = () => {
                   />
                 </Typography>
               </Link>
-              <Stack direction='row' gap="20px" alignItems='center'>
-                <Typography variant='body1' sx={{ opacity: 0.7}}>
-                    {parseInt(viewCount).toLocaleString()} views
+              <Stack direction="row" gap="20px" alignItems="center">
+                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                  {parseInt(viewCount).toLocaleString()} views
                 </Typography>
-                <Typography variant='body1' sx={{ opacity: 0.7}}>
-                    {parseInt(likeCount).toLocaleString()} likes
+                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                  {parseInt(likeCount).toLocaleString()} likes
                 </Typography>
               </Stack>
             </Stack>
           </Box>
         </Box>
-      </Stack>
 
-      <Box px={2} py={{ md: 1, xs: 5}} justifyContent='center' alignItems='center'>
-        <Videos videos={videos} />  
-      </Box>
+        <Box
+          px={2}
+          py={{ md: 1, xs: 5 }}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Videos videos={videos} direction="column" />
+        </Box>
+      </Stack>
     </Box>
   );
 };
