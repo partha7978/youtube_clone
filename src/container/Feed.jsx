@@ -30,9 +30,9 @@ const Feed = () => {
         <Typography
           className="copyright"
           variant="body2"
-          sx={{ mt: 1.5, color: "#fff" }}
+          sx={{ mt: 1.5, color: "#fff", fontSize: "0.7rem" }}
         >
-          Copyright © 2023 Partha
+          Made with ❤️ by <a style={{color: "#fff"}} href="https://parthasarathimuduli.netlify.app/">Partha</a>
         </Typography>
       </Box>
 

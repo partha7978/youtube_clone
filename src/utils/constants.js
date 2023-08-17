@@ -1,6 +1,7 @@
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import HomeIcon from '@mui/icons-material/Home';
 import CodeIcon from '@mui/icons-material/Code';
+import GiGamepad from '@mui/icons-material/Gamepad';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
@@ -17,7 +18,7 @@ export const logo = Logo;
 
 export const categories = [
   { name: 'New', icon: <HomeIcon />, },
-  { name: 'Soul Mortal', icon: <CodeIcon />, },
+  { name: 'Soul Mortal', icon: <GiGamepad />, },
   { name: 'Alta Makhi', icon: <MusicNoteIcon />, },
   { name: 'ReactJS', icon: <CodeIcon />, },
   { name: 'JavaScript', icon: <CodeIcon />, },
