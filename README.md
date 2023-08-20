@@ -8,7 +8,14 @@
 <br><br>
 
 ## Screenshots
-I will add it soon.
+
+| Home Page | Search Result | Video Page |
+| :---: | :---: | :---: |
+| ![App Screenshot](./readme_images/bigScreen.png) | ![App Screenshot](./readme_images/searchPage.png) | ![App Screenshot](./readme_images/videoPage.png) |
+
+| Channel Page | Small Screen |
+| :---: | :---: |
+| ![App Screenshot](./readme_images/channelPage.png) | ![App Screenshot](./readme_images/smallScreen.png) |
 
 
 ## Installation
