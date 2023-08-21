@@ -3,14 +3,18 @@ import { Box, Stack, Typography } from "@mui/material";
 import { SideBar, Videos } from "../components";
 import { fetchFromApi } from "../utils/fetchFromApi";
 
-const Feed = () => {
+const Feed = ({ progress, setProgress }) => {
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-      setVideos(data.items)
-    );
+    setProgress(10);
+    fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data) => {
+      setProgress(30);
+      setVideos(data.items);
+      setProgress(70);
+    });
+    setProgress(100);
   }, [selectedCategory]);
 
   return (
@@ -32,7 +36,13 @@ const Feed = () => {
           variant="body2"
           sx={{ mt: 1.5, color: "#fff", fontSize: "0.7rem" }}
         >
-          Made with ❤️ by <a style={{color: "#fff"}} href="https://parthasarathimuduli.netlify.app/">Partha</a>
+          Made with ❤️ by{" "}
+          <a
+            style={{ color: "#fff" }}
+            href="https://parthasarathimuduli.netlify.app/"
+          >
+            Partha
+          </a>
         </Typography>
       </Box>
 

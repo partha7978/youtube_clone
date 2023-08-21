@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import { Videos, ChannelCard } from "../components";
 import { fetchFromApi } from "../utils/fetchFromApi";
 
-const ChannelDetail = () => {
+const ChannelDetail = ({ progress, setProgress }) => {
   const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
@@ -12,13 +12,19 @@ const ChannelDetail = () => {
   console.log(videos, "videos");
 
   useEffect(() => {
+    setProgress(10);
     fetchFromApi(`channels?part=snippet"&id=${id}`).then((data) =>
       setChannelDetail(data?.items[0])
     );
-
+    setProgress(30);
     fetchFromApi(`search?channelId=${id}&part=snippet&order=date`).then(
-      (data) => setVideos(data?.items)
+      (data) => {
+        setProgress(50);
+        setVideos(data?.items);
+        setProgress(70);
+      }
     );
+    setProgress(100);
   }, [id]);
   return (
     <Box minHeight="95vh">

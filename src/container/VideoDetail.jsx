@@ -6,7 +6,7 @@ import { CheckCircle } from "@mui/icons-material";
 import { Videos } from "../components/";
 import { fetchFromApi } from "../utils/fetchFromApi";
 
-const VideoDetail = () => {
+const VideoDetail = ({ progress, setProgress }) => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
@@ -15,13 +15,18 @@ const VideoDetail = () => {
   );
 
   useEffect(() => {
-    fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
-      setVideoDetail(data?.items[0])
-    );
+    setProgress(10);
+
+    fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) => {
+      setProgress(30);
+      setVideoDetail(data?.items[0]);
+      setProgress(50);
+    });
 
     fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setChannelVideoId(data?.items[0].snippet.channelId)
     );
+    setProgress(100);
 
     // fetchFromApi(`search?part=id,snippet&relatedToVideoId=${id}&type=video`)
     //   .then((data) => console.log(data, "data"))
@@ -63,7 +68,13 @@ const VideoDetail = () => {
               className="react-player"
               controls
             />
-            <Typography color="#fff" variant="h5" fontWeight="bold" px={2} py={1}>
+            <Typography
+              color="#fff"
+              variant="h5"
+              fontWeight="bold"
+              px={2}
+              py={1}
+            >
               {title}
             </Typography>
             <Stack
