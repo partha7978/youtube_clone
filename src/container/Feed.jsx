@@ -39,7 +39,7 @@ const Feed = ({ progress, setProgress }) => {
           Made with ❤️ by{" "}
           <a
             style={{ color: "#fff" }}
-            href="https://parthasarathimuduli.netlify.app/"
+            href="https://parthadev.netlify.app/"
           >
             Partha
           </a>
