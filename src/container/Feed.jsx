@@ -12,9 +12,9 @@ const Feed = ({ progress, setProgress }) => {
     fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data) => {
       setProgress(30);
       setVideos(data.items);
-      setProgress(70);
+      setProgress(100);
     });
-    setProgress(100);
+
   }, [selectedCategory]);
 
   return (

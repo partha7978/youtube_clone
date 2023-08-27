@@ -16,15 +16,13 @@ const ChannelDetail = ({ progress, setProgress }) => {
     fetchFromApi(`channels?part=snippet"&id=${id}`).then((data) =>
       setChannelDetail(data?.items[0])
     );
-    setProgress(30);
     fetchFromApi(`search?channelId=${id}&part=snippet&order=date`).then(
       (data) => {
         setProgress(50);
         setVideos(data?.items);
-        setProgress(70);
+        setProgress(100);
       }
     );
-    setProgress(100);
   }, [id]);
   return (
     <Box minHeight="95vh">

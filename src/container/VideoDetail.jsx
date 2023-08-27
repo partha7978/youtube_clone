@@ -20,13 +20,12 @@ const VideoDetail = ({ progress, setProgress }) => {
     fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) => {
       setProgress(30);
       setVideoDetail(data?.items[0]);
-      setProgress(50);
+      setProgress(100);
     });
 
     fetchFromApi(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setChannelVideoId(data?.items[0].snippet.channelId)
     );
-    setProgress(100);
 
     // fetchFromApi(`search?part=id,snippet&relatedToVideoId=${id}&type=video`)
     //   .then((data) => console.log(data, "data"))
