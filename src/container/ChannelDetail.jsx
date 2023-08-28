@@ -8,8 +8,8 @@ const ChannelDetail = ({ progress, setProgress }) => {
   const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
-  console.log(channelDetail, "channelDetail");
-  console.log(videos, "videos");
+  // console.log(channelDetail, "channelDetail");
+  // console.log(videos, "videos");
 
   useEffect(() => {
     setProgress(10);
@@ -23,6 +23,8 @@ const ChannelDetail = ({ progress, setProgress }) => {
         setProgress(100);
       }
     );
+      console.log(channelDetail, "channelDetail");
+    document.title = `Youtube Clone - ${channelDetail?.snippet?.title}`;
   }, [id]);
   return (
     <Box minHeight="95vh">

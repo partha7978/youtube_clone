@@ -14,6 +14,7 @@ const Feed = ({ progress, setProgress }) => {
       setVideos(data.items);
       setProgress(100);
     });
+    document.title = `Youtube Clone - ${selectedCategory}`;
 
   }, [selectedCategory]);
 
