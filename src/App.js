@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Box sx={{ backgroundColor: "#000" }}>
+      <Box sx={{ backgroundColor: "#0F0F0F" }}>
         <Navbar />
         <LoadingBar
           color="#FC1503"

@@ -23,7 +23,7 @@ const Feed = ({ progress, setProgress }) => {
       <Box
         sx={{
           height: { sx: "auto", md: "92vh" },
-          borderRight: "1px solid #3d3d3d",
+          // borderRight: "1px solid #3d3d3d",
           px: { sx: 0, md: 2 },
         }}
       >
@@ -35,11 +35,11 @@ const Feed = ({ progress, setProgress }) => {
         <Typography
           className="copyright"
           variant="body2"
-          sx={{ mt: 1.5, color: "#fff", fontSize: "0.7rem" }}
+          sx={{ mt: 1.5, color: "#3F3F3F", fontSize: "0.7rem" }}
         >
           Made with ❤️ by{" "}
           <a
-            style={{ color: "#fff" }}
+            style={{ color: "#3F3F3F" }}
             href="https://parthadev.netlify.app/"
           >
             Partha
@@ -47,7 +47,7 @@ const Feed = ({ progress, setProgress }) => {
         </Typography>
       </Box>
 
-      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+      <Box p={2} pt={0} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
         <Typography
           variant="h4"
           fontWeight="bold"
