@@ -25,7 +25,9 @@ const VideoCard = ({
         outline: 0,
         overflow: "hidden",
         boxShadow: "none", 
+        backgroundColor: "#0F0F0F",
         border: 0,
+        borderRadius: 0
       }}
     >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
@@ -36,7 +38,7 @@ const VideoCard = ({
             xs: "100%",
             sm: "350px",
             md: "300px",
-          }, height: 180 }}
+          }, height: {xs: 160, sm: 165, md: 168}, borderRadius: 3 }}
         />
       </Link>
       <CardContent sx={{ backgroundColor: "#0F0F0F", height: "106px", paddingLeft: 0 }}>
