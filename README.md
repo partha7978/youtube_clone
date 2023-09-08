@@ -18,6 +18,19 @@
 | ![App Screenshot](./readme_images/channelPage.png) | ![App Screenshot](./readme_images/smallScreen.png) |
 
 
+## Program Structure and Processing
+
+I have created 5 main container components ```ChannelDetails, Feed, Navbar, SearchFeed, VideoDetail ``` and 5 sub components which will put inside those containers as ```ChannelCard, SearchBar, SideBar, VideoCard, Videos ```.  
+
+* Inside ```Navbar```, there is logo and ```SearchBar``` component.
+* Inside the ```Feed``` component, the page starts from here, this is the home page.
+* There is ```SideBar``` where all the categories are displayed. Whenever you clicked on any category, the videos will be displayed according to that category in ```Video``` component. 
+* Inside ```Videos```, there is ```ChannelCard```, and ```VideoCard``` component. and all the videos and channel cards will be displayed here.
+* When you click on any video card, you will be redirected to the ```VideoDetail``` component. You can watch the video, and the suggested videos will be displayed here.
+* When you click on any channel name, you will be redirected to the ```ChannelDetails``` component where you can view the channel details and channel videos.
+
+
+
 ## Installation
 
 Install Youtube Clone on your local machine
@@ -58,4 +71,4 @@ Install Youtube Clone on your local machine
 
 <br> 
 
-## Copyright (c) 2022 <a href="https://parthasarathimuduli.netlify.app/" target="_self">Partha Sarathi Muduli</a>
+### Copyright (c) 2022 <a href="https://parthasarathimuduli.netlify.app/" target="_self">Partha Sarathi Muduli</a>
