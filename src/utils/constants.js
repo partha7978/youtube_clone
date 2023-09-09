@@ -12,16 +12,17 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
+import PublicIcon from '@mui/icons-material/Public';
 import Logo from '../assets/youtube.png';
 
 export const logo = Logo;
 
 export const categories = [
   { name: 'New', icon: <HomeIcon />, },
-  { name: 'Soul Mortal', icon: <GiGamepad />, },
-  { name: 'Alta Makhi', icon: <MusicNoteIcon />, },
+  { name: 'Bgmi Live', icon: <GiGamepad />, },
+  { name: 'Odia Songs', icon: <MusicNoteIcon />, },
   { name: 'ReactJS', icon: <CodeIcon />, },
-  { name: 'JavaScript', icon: <CodeIcon />, },
+  { name: 'Geo Politics', icon: <PublicIcon />, },
   { name: 'Music', icon: <MusicNoteIcon /> },
   { name: 'Education', icon: <SchoolIcon />, },
   { name: 'Podcast', icon: <GraphicEqIcon />, },

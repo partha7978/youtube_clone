@@ -38,7 +38,7 @@ const VideoCard = ({
             xs: "100%",
             sm: "350px",
             md: "300px",
-          }, height: {xs: 160, sm: 165, md: 168}, borderRadius: 3 }}
+          }, height: {xs: 200, sm: 165, md: 168}, borderRadius: 3 }}
         />
       </Link>
       <CardContent sx={{ backgroundColor: "#0F0F0F", height: "106px", paddingLeft: 0 }}>
