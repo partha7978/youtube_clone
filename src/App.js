@@ -11,6 +11,9 @@ import {
 import LoadingBar from "react-top-loading-bar";
 import "./App.css";
 
+import { Provider } from "react-redux";
+import store from './store/store';
+
 const App = () => {
   const [progress, setProgress] = useState(0);
 
