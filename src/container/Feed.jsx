@@ -3,7 +3,11 @@ import { Box, Stack, Typography } from "@mui/material";
 import { SideBar, Videos } from "../components";
 import { fetchFromApi } from "../utils/fetchFromApi";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setVideos } from "../store/videoSlice";
+
 const Feed = ({ progress, setProgress }) => {
+  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState([]);
 
@@ -12,6 +16,7 @@ const Feed = ({ progress, setProgress }) => {
     fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data) => {
       setProgress(30);
       setVideos(data.items);
+      // dispatch(setVideos(data.items));
       setProgress(100);
     });
     document.title = `Youtube Clone - ${selectedCategory}`;
