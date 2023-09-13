@@ -4,7 +4,7 @@ import { SideBar, Videos } from "../components";
 import { fetchFromApi } from "../utils/fetchFromApi";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setVideos } from "../store/videoSlice";
+import { setVideos, fetchVideos } from "../store/videoSlice";
 
 const Feed = ({ progress, setProgress }) => {
   const dispatch = useDispatch();
@@ -19,6 +19,8 @@ const Feed = ({ progress, setProgress }) => {
       // dispatch(setVideos(data.items));
       setProgress(100);
     });
+
+    dispatch(fetchVideos(`search?part=snippet&q=${selectedCategory}`));
     document.title = `${selectedCategory} - Youtube`;
 
   }, [selectedCategory]);
