@@ -19,7 +19,7 @@ const Feed = ({ progress, setProgress }) => {
       // dispatch(setVideos(data.items));
       setProgress(100);
     });
-    document.title = `Youtube Clone - ${selectedCategory}`;
+    document.title = `${selectedCategory} - Youtube`;
 
   }, [selectedCategory]);
 

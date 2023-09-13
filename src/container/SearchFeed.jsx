@@ -13,8 +13,9 @@ const SearchFeed = ({ progress, setProgress }) => {
     fetchFromApi(`search?part=snippet&q=${searchTerm}`).then((data) => {
       setProgress(30);
       setVideos(data.items);
-      setProgress(100);
+      setProgress(100); 
     });
+    document.title = `${searchTerm} - Youtube`;
   }, [searchTerm]);
 
   return (

@@ -24,7 +24,7 @@ const ChannelDetail = ({ progress, setProgress }) => {
       }
     );
       console.log(channelDetail, "channelDetail");
-    document.title = `Youtube Clone - ${channelDetail?.snippet?.title}`;
+    document.title = `${channelDetail?.snippet?.title} - Youtube`;
   }, [id]);
   return (
     <Box minHeight="95vh">

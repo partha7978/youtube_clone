@@ -57,7 +57,7 @@ const VideoDetail = ({ progress, setProgress }) => {
     statistics: { viewCount, likeCount },
   } = videoDetail;
 
-  document.title = `Youtube Clone - ${title}`;
+  document.title = `${title} - Youtube`;
 
   return (
     <Box minHeight="95vh">
