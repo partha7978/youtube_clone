@@ -42,15 +42,7 @@ export function fetchVideos(url) {
             console.log(data.items, "dataTHUNK");
         }
         catch (err) {
-            console.log(err, 'errorTHUNK');
+            console.log(err);
         }
     }
 }
-// export const fetchFromApi = async (url) => {
-//     // const {data} = await axios.request(`${BASE_URL}/${url}`, options);
-//     // console.log(`${BASE_URL}/${url}`);
-
-//     // console.log(apiKey, 'apiKey')
-
-//     return data;
-// }

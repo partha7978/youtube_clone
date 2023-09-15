@@ -9,21 +9,17 @@ import { setVideos, fetchVideos } from "../store/videoSlice";
 const Feed = ({ progress, setProgress }) => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("New");
-  const [videos, setVideos] = useState([]);
+  // const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     setProgress(10);
-    fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data) => {
-      setProgress(30);
-      setVideos(data.items);
-      // dispatch(setVideos(data.items));
-      setProgress(100);
-    });
-
+    setProgress(30);
     dispatch(fetchVideos(`search?part=snippet&q=${selectedCategory}`));
+    setProgress(100);
     document.title = `${selectedCategory} - Youtube`;
-
   }, [selectedCategory]);
+
+  // console.log(useSelector((state) => state.video), 'video from feed component');
 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
@@ -45,10 +41,7 @@ const Feed = ({ progress, setProgress }) => {
           sx={{ mt: 1.5, color: "#3F3F3F", fontSize: "0.7rem" }}
         >
           Made with ❤️ by{" "}
-          <a
-            style={{ color: "#3F3F3F" }}
-            href="https://parthadev.netlify.app/"
-          >
+          <a style={{ color: "#3F3F3F" }} href="https://parthadev.netlify.app/">
             Partha
           </a>
         </Typography>
@@ -64,7 +57,7 @@ const Feed = ({ progress, setProgress }) => {
           {selectedCategory} <span style={{ color: "#FC1503" }}>videos</span>
         </Typography>
 
-        <Videos videos={videos} />
+        <Videos />
       </Box>
     </Stack>
   );
