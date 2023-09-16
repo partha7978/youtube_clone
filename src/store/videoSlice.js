@@ -34,15 +34,14 @@ const options = {
 };
 
 export function fetchVideos(url) {
-    return async function fetchVideosThunk(dispatch, getState) {
-        dispatch(setVideos([]));
-        try {
-            const {data} = await axios.request(`${BASE_URL}/${url}`, options);
-            dispatch(setVideos(data.items));
-            console.log(data.items, "dataTHUNK");
-        }
-        catch (err) {
-            console.log(err);
-        }
+  return async function fetchVideosThunk(dispatch, getState) {
+    dispatch(setVideos([]));
+    try {
+      const { data } = await axios.request(`${BASE_URL}/${url}`, options);
+      dispatch(setVideos(data.items));
+      console.log(data.items, "dataTHUNK");
+    } catch (err) {
+      console.log(err);
     }
+  };
 }

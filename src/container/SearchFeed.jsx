@@ -3,20 +3,22 @@ import { Box, Typography } from "@mui/material";
 import { Videos } from "../components";
 import { fetchFromApi } from "../utils/fetchFromApi";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setVideos, fetchVideos } from '../store/videoSlice'
 
 const SearchFeed = ({ progress, setProgress }) => {
-  const [videos, setVideos] = useState([]);
+  const dispatch = useDispatch();
   const { searchTerm } = useParams();
 
   useEffect(() => {
     setProgress(10);
-    fetchFromApi(`search?part=snippet&q=${searchTerm}`).then((data) => {
-      setProgress(30);
-      setVideos(data.items);
-      setProgress(100); 
-    });
+    setProgress(30);
+    dispatch(fetchVideos(`search?part=snippet&q=${searchTerm}`))
+    setProgress(100); 
     document.title = `${searchTerm} - Youtube`;
   }, [searchTerm]);
+
+  // console.log(useSelector((state) => state.video), "search videos data");
 
   return (
     <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
@@ -25,7 +27,7 @@ const SearchFeed = ({ progress, setProgress }) => {
         <span style={{ color: "#FC1503" }}>{searchTerm}</span>
       </Typography>
 
-      <Videos videos={videos} />
+      <Videos/>
     </Box>
   );
 };
