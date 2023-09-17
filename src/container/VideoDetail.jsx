@@ -5,8 +5,11 @@ import { Box, Typography, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { Videos } from "../components/";
 import { fetchFromApi } from "../utils/fetchFromApi";
+import { useSelector, useDispatch } from "react-redux";
+import {setVideos, fetchVideos} from '../store/videoSlice.js'
 
 const VideoDetail = ({ progress, setProgress }) => {
+  const dispatch = useDispatch();
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
@@ -36,14 +39,16 @@ const VideoDetail = ({ progress, setProgress }) => {
   }, [id]);
 
   useEffect(() => {
+    //* getting related vides from channel
     console.log(
       channelVideoId ? channelVideoId : "invalid channel id",
       "channelId"
     );
-    fetchFromApi(
-      `search?part=id%2Csnippet&channelId=${channelVideoId}&order=date`
-    ).then((data) => setVideos(data?.items));
-    console.log(videos, "videosrelated");
+    dispatch(fetchVideos(`search?part=id%2Csnippet&channelId=${channelVideoId}&order=date`));
+    // fetchFromApi(
+    //   `search?part=id%2Csnippet&channelId=${channelVideoId}&order=date`
+    // ).then((data) => setVideos(data?.items));
+    // console.log(videos, "videosrelated");
   }, [channelVideoId]);
 
   if (!videoDetail?.snippet) return "Loading...";
